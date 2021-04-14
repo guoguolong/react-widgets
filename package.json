@@ -1,5 +1,5 @@
 {
-  "name": "@koda/react-widgets",
+  "name": "koda-react-widgets",
   "version": "1.0.0",
   "description": "React Components",
   "module": "es/index.js",
