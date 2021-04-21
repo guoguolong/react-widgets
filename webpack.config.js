@@ -3,7 +3,7 @@ const { ESBuildPlugin } = require('esbuild-loader')
 const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   mode: 'development',
   devtool: 'source-map',
   output: {
@@ -19,7 +19,8 @@ module.exports = {
     }
   },
   externals: {
-     'react': 'React'
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     rules: [
@@ -49,6 +50,10 @@ module.exports = {
         }
       },
     ],
+    noParse: [
+      require.resolve('react'),
+      require.resolve('react-dom')
+    ]
   },
   plugins: [
    new EsmWebpackPlugin(),

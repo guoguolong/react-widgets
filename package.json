@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Components",
   "module": "es/index.js",
+  "types": "es/src/index.d.ts",
   "scripts": {
     "build": "npx webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
