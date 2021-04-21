@@ -1,14 +1,11 @@
 const { resolve } = require('path')
-const { ESBuildPlugin } = require('esbuild-loader')
-const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
 module.exports = {
   entry: './src/index.ts',
   mode: 'development',
   devtool: 'source-map',
   output: {
-    library: "LIB",
-    libraryTarget: "var",
+    libraryTarget: "commonjs2",
     path: resolve(__dirname, 'es'),
     filename: 'index.js'
   },
@@ -19,8 +16,18 @@ module.exports = {
     }
   },
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
+    react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+    },
+    'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom'
+    }
   },
   module: {
     rules: [
@@ -49,14 +56,7 @@ module.exports = {
           target: 'es2015'
         }
       },
-    ],
-    noParse: [
-      require.resolve('react'),
-      require.resolve('react-dom')
     ]
   },
-  plugins: [
-   new EsmWebpackPlugin(),
-   new ESBuildPlugin()
-  ]
+  plugins: []
 }
