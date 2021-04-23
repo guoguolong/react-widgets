@@ -34,7 +34,7 @@ export default ({ onChange = null, value = '', disabled = false, uploadPath = 'g
     ): '';
 
   return (
-    <div className="omc-widegts-image-field" onMouseOver={()=>{
+    <div className="widegts-image-field" onMouseOver={()=>{
       if(actionRef && actionRef.current) actionRef.current.style.display = 'flex';
     }} onMouseOut={()=>{
       if(actionRef && actionRef.current) actionRef.current.style.display = 'none';
